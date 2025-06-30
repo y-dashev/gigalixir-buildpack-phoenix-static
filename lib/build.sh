@@ -41,7 +41,7 @@ resolve_node_version() {
   esac
 
   local node_file=""
-  if node_file=$(curl --silent --get --retry 5 --retry-max-time 15 $lookup_url | grep -oE  '"node-v[0-9]+.[0-9]+.[0-9]+-linux-x64.tar.gz"')
+  if node_file=$(curl --silent --get --retry 5 --retry-max-time 15 $lookup_url | grep -oE 'node-v[0-9]+\.[0-9]+\.[0-9]+-linux-x64.tar.gz')
   then
     node_version=$(echo "$node_file" | sed -E 's/.*node-v([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
     node_url="${base_url}/v${node_version}/${node_file//\"/}"
